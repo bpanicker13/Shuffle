@@ -1,5 +1,5 @@
 # Installation guide
-Installation of Shuffle is currently only available in docker. Looking for how to update Shuffle? Check the [updating guide](https://shuffler.io/docs/configuration#updating_shuffle)
+Installation of Straife vSOC is currently only available in docker.
 
 ## Docker
 The Docker setup is done with docker-compose and is a single command to get set up.
@@ -9,18 +9,18 @@ The Docker setup is done with docker-compose and is a single command to get set 
 1. Make sure you have Docker and [docker-compose](https://docs.docker.com/compose/install/) installed.
 2. Run docker-compose.
 ```
-git clone https://github.com/frikky/Shuffle
-cd Shuffle
+git clone https://github.com/bpanicker13/Straife
+cd Straife
 docker-compose up -d
 ```
 
 When you're done, skip to the "After installation" step below.
 
-## Windows Docker setup 
+## Windows Docker setup
 This step is for setting up with Docker on windows from scratch.
 
 1. Make sure you have [Docker](https://docs.docker.com/docker-for-windows/install/) and [docker-compose](https://docs.docker.com/compose/install/) installed. WSL2 may be required.
-2. Go to https://github.com/frikky/shuffle/releases and download the latest .zip release (or install git)
+2. Go to https://github.com/bpanicker13/straife and download the latest .zip release (or install git)
 3. Unzip the folder and enter it
 4. Open the .env file and change the line with "OUTER_HOSTNAME" to contain your IP:
 ```
@@ -30,20 +30,12 @@ OUTER_HOSTNAME=YOUR.IP.HERE
 ```
 docker-compose up -d
 ```
-
-### Configurations (proxies, default users etc.)
-https://shuffler.io/docs/configuration
-
-### After installation 
+### After installation
 1. After installation, go to http://localhost:3001/adminsetup (or your servername)
 
 2. Now set up your admin account (username & password). Shuffle doesn't have a default username and password.
-3. Check out https://shuffler.io/docs/configuration as it has a lot of useful information to get started
-
-![Admin account setup](https://github.com/frikky/Shuffle/blob/master/frontend/src/assets/img/shuffle_adminaccount.png)
 
 ### Useful info
-* Check out [getting started](https://shuffler.io/docs/getting_started)
 * The server is available on http://localhost:3001 (or your servername)
 * Further configurations can be done in docker-compose.yml and .env.
 * Default database location is /etc/shuffle
@@ -82,14 +74,14 @@ docker-compose up
 
 Related issue: #47
 
-# Local development installation 
+# Local development installation
 Local development is pretty straight forward with **ReactJS** and **Golang**. This part is intended to help you run the code for development purposes.
 
 **PS: You have to stop the Backend Docker container to get this one working**
 **PPS: Use the "Launch" branch when developing to get it set up easier**
 
 ## Frontend - ReactJS /w cytoscape
-http://localhost:3000 - Requires [npm](https://nodejs.org/en/download/)/[yarn](https://yarnpkg.com/lang/en/docs/install/#debian-stable)/your preferred manager. Runs independently from backend. 
+http://localhost:3000 - Requires [npm](https://nodejs.org/en/download/)/[yarn](https://yarnpkg.com/lang/en/docs/install/#debian-stable)/your preferred manager. Runs independently from backend.
 ```bash
 cd frontend
 npm i
@@ -97,7 +89,7 @@ npm start
 ```
 
 ## Backend - Golang
-http://localhost:5001 - REST API - requires [>=go1.13](https://golang.org/dl/) 
+http://localhost:5001 - REST API - requires [>=go1.13](https://golang.org/dl/)
 ```bash
 export DATASTORE_EMULATOR_HOST=0.0.0.0:8000
 cd backend/go-app
@@ -114,7 +106,7 @@ docker run -p 8000:8000 google/cloud-sdk gcloud beta emulators datastore start -
 
 ## Orborus
 Execution of Workflows:
-PS: This requires some specific environment variables 
+PS: This requires some specific environment variables
 ```
 cd functions/onprem/orborus
 go run orborus.go
@@ -130,5 +122,3 @@ export DOCKER_API_VERSION=1.40
 ```
 
 **WINDOWS USERS:** You'll have to to add the "export" part as an environment variable.
-
-AND THAT's it - hopefully it worked. If it didn't please email [frikky@shuffler.io](mailto:frikky@shuffler.io)
